@@ -3,10 +3,10 @@ import { fetchMovies } from "./MoviesActions"
 
 export interface Movie {
     imdbID: string;
-    poster: string;
-    title: string;
-    type: string;
-    year: string;
+    Poster: string;
+    Title: string;
+    Type: string;
+    Year: string;
 }
 
 export interface MOVIE_STATE {
@@ -19,10 +19,14 @@ const INITIAL_STATE: MOVIE_STATE = {
 
 export const moviesReducer = createReducer(INITIAL_STATE, (builder) => {
     builder.addCase(fetchMovies, (state: any, action: any) => {
+        if (!action.payload) return state;
         let movies: { [id: string]: Movie } = {};
-
+        console.log(action.payload);
         action.payload.forEach((movie: Movie) => movies[movie.imdbID] = movie);
         
         state.movies = movies;
+    })
+    builder.addDefaultCase((state: any, action: any) => {
+        return state;
     })
 })

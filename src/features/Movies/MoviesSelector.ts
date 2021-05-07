@@ -6,5 +6,5 @@ const selectMovieState = (state: RootState) => state.movies;
 
 export const selectMovies = createSelector(
     [selectMovieState],
-    (movies: MOVIE_STATE) => movies
+    (movies: MOVIE_STATE) => movies.movies
 )
