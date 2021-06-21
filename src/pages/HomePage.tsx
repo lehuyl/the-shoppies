@@ -3,9 +3,14 @@ import Results from '../features/Results/Results';
 import SearchBar from '../features/SearchBar/SearchBar';
 
 const HomePage = () => (
-    <div className="flex flex-col items-center w-11/12 h-screen items-center py-20 px-80 bg-gray-200">
-        <SearchBar />
-        <Results />
+    <div className="flex flex-row items-center w-screen h-screen items-center">
+        <div className="h-full w-full bg-yellow-200 bg-opacity-40">
+            <SearchBar />
+            <Results />
+        </div>
+        <div className="h-full w-full bg-green-700 bg-opacity-90">
+            Nominated
+        </div>
     </div>
 );
 export default HomePage;

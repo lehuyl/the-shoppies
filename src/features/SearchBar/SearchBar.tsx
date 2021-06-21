@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../../app/hooks';
 import { AppDispatch } from '../../app/store';
-import { fetchMovies } from '../Movies/MoviesActions';
-import { fetchMoviesFromAPI } from '../Movies/MoviesAPI';
+import { fetchMoviesStartAsync } from '../Movies/MoviesActions';
 
 const SearchBar = () => {
     const [query, setQuery] = useState('');
-    const dispatch: AppDispatch = useDispatch();
+    const dispatch: AppDispatch = useAppDispatch();
 
     const handleKeyPress = (e: any) => {
         e.preventDefault();
         if (e.currentTarget.value.length === 0) return
         if (e.key === 'Enter') {
-            fetchMoviesFromAPI(query).then((results: any) => dispatch(fetchMovies(results?.data?.Search)));
+            dispatch(fetchMoviesStartAsync(query));
         }
     };
 
